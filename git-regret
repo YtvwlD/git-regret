@@ -16,4 +16,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-print ("git regret --hard")
+from argparse import ArgumentParser
+
+#parse the arguments
+parser = ArgumentParser(prog="git regret", description="Delete changes in your repository because you deeply regret them.")
+group = parser.add_mutually_exclusive_group()
+group.add_argument("--soft", help="Delete all changes since the last commit.", action="store_true")
+group.add_argument("--hard", help="Delete the last commit.", action="store_true")
+args = parser.parse_args()
+
+if args.soft:
+    pass
+elif args.hard:
+    pass
+else:
+    print("How deeply do you regret your changes? See 'git regret -h' for help.")
