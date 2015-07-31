@@ -17,6 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from argparse import ArgumentParser
+from os import system
 
 #parse the arguments
 parser = ArgumentParser(prog="git regret", description="Delete changes in your repository because you deeply regret them.")
@@ -26,8 +27,15 @@ group.add_argument("--hard", help="Delete the last commit.", action="store_true"
 args = parser.parse_args()
 
 if args.soft:
-    pass
+    if system("git reset --hard HEAD") == 0:
+        print ("Deleted all changes since the last commit.")
+    else:
+        print ("Something went wrong. Please check the output above.")
 elif args.hard:
-    pass
+    if system("git reset --soft HEAD^") == 0:
+        print ("Deleted the last commit - but not any of the changes. They're still staged.")
+        print ("If you want to delete them, too, please run 'git regret --soft'.")
+    else:
+        print ("Something went wrong. Please check the output above.")
 else:
     print("How deeply do you regret your changes? See 'git regret -h' for help.")
