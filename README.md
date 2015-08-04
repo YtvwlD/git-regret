@@ -1,8 +1,11 @@
 # git-regret
 `git regret --hard`
 
+## Why?! ##
 
 Do you regret your changes to a GIT repository sometimes? That's when `git regret` becomes useful.
+
+This is inspired by [two](https://twitter.com/RebeccaSlatkin/status/623720926358687744) [tweets](https://twitter.com/Lee_Ars/status/624576071678033922).
 
 ## How to install it ##
 
